@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_03_06_075548) do
+ActiveRecord::Schema.define(version: 2018_03_07_081313) do
 
   create_table "active_admin_comments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "namespace"
@@ -64,4 +64,53 @@ ActiveRecord::Schema.define(version: 2018_03_06_075548) do
     t.index ["reset_password_token"], name: "index_admin_users_on_reset_password_token", unique: true
   end
 
+  create_table "customer_contacts", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "region"
+    t.string "address"
+    t.string "phone"
+    t.string "fax"
+    t.string "email"
+    t.string "website"
+    t.bigint "customer_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["customer_id"], name: "index_customer_contacts_on_customer_id"
+  end
+
+  create_table "customer_requisites", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "value"
+    t.bigint "customer_id"
+    t.bigint "requisite_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["customer_id"], name: "index_customer_requisites_on_customer_id"
+    t.index ["requisite_id"], name: "index_customer_requisites_on_requisite_id"
+  end
+
+  create_table "customers", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "name"
+    t.string "unp_ogrn"
+    t.string "scope"
+    t.string "category"
+    t.string "type"
+    t.string "status"
+    t.text "comment"
+    t.string "bill_type"
+    t.boolean "is_bill_attachment"
+    t.string "application_type"
+    t.string "invoice_from"
+    t.string "payment_type"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "requisites", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_foreign_key "customer_contacts", "customers"
+  add_foreign_key "customer_requisites", "customers"
+  add_foreign_key "customer_requisites", "requisites"
 end

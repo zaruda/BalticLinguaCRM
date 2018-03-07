@@ -1,0 +1,29 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  unp_ogrn: MyString
+  scope: MyString
+  category: MyString
+  type: 
+  status: MyString
+  comment: MyText
+  bill_type: MyString
+  is_bill_attachment: false
+  application_type: MyString
+  invoice_from: MyString
+  payment_type: MyString
+
+two:
+  name: MyString
+  unp_ogrn: MyString
+  scope: MyString
+  category: MyString
+  type: 
+  status: MyString
+  comment: MyText
+  bill_type: MyString
+  is_bill_attachment: false
+  application_type: MyString
+  invoice_from: MyString
+  payment_type: MyString
