@@ -222,6 +222,7 @@ ActiveAdmin.setup do |config|
   #     end
   #   end
   #
+  #
   # If you wanted to add a static menu item to the default menu provided:
   #
   #   config.namespace :admin do |admin|
@@ -229,6 +230,12 @@ ActiveAdmin.setup do |config|
   #       menu.add label: "My Great Website", url: "http://www.mygreatwebsite.com", html_options: { target: :blank }
   #     end
   #   end
+
+  config.namespace :admin do |admin|
+    admin.build_menu do |menu|
+      menu.add label: 'Задачи'
+    end
+  end
 
   # == Download Links
   #

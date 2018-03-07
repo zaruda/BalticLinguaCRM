@@ -1,4 +1,12 @@
 ru:
+  devise:
+    sessions:
+      admin_user:
+        signed_in: 'Добро пожаловать в BalticLinguaCRM'
+        unauthenticated: 'Пожалуйста, введите логин и пароль'
+  date:
+    formats:
+      long: "%d-%m-%Y"
   time:
     formats:
       long: "%Y-%m-%d %H:%M:%S"
@@ -7,6 +15,7 @@ ru:
     dashboard_welcome:
       welcome: "Добро пожаловать в Active Admin. Это стандартная страница управления сайтом."
       call_to_action: "Чтобы добавить сюда что-нибудь загляните в 'app/admin/dashboard.rb'"
+    create_another: "Eще"
     view: "Открыть"
     edit: "Изменить"
     delete: "Удалить"
