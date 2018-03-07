@@ -1,7 +1,7 @@
-ActiveAdmin.register Requisite do
-  permit_params :name
-  menu label: "Реквизиты"
-  config.create_another = true
+ActiveAdmin.register ContractorService do
+  belongs_to :contractor
+
+  permit_params :language_from, :language_to, :contractor_id, :service_id
 
 # See permitted parameters documentation:
 # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters

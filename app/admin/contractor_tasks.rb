@@ -1,7 +1,8 @@
-ActiveAdmin.register Requisite do
-  permit_params :name
-  menu label: "Реквизиты"
-  config.create_another = true
+ActiveAdmin.register ContractorTask do
+  menu label: 'Подрядчикам', parent: 'Задачи'
+
+  permit_params :status, :tarif, :scope_of_work, :description, :contractor_id
+
 
 # See permitted parameters documentation:
 # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
