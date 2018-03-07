@@ -1,4 +1,5 @@
 ActiveAdmin.register Customer do
+  menu label: "Заказчики", priority: 2
 
   permit_params :name, :scope, :category, :type, :status, :unp_ogrn,
                 :bill_type, :is_bill_attachment, :application_type,
@@ -6,23 +7,19 @@ ActiveAdmin.register Customer do
 
 
   show title: :name do
-    # panel "Order History" do
-      # table_for(user.orders) do
-      #   column("Order", sortable: :id) do |order|
-      #     link_to "##{order.id}", admin_order_path(order)
-      #   end
-      #   column("State") { |order| status_tag(order.state) }
-      #   column("Date", sortable: :checked_out_at) do |order|
-      #     pretty_format(order.checked_out_at)
-      #   end
-      #   column("Total") { |order| number_to_currency order.total_price }
-      # end
+    # panel "Main info" do
+    #   table_for(user.orders) do
+    #     column("Order", sortable: :id) do |order|
+    #       link_to "##{order.id}", admin_order_path(order)
+    #     end
+    #     column("State") { |order| status_tag(order.state) }
+    #     column("Date", sortable: :checked_out_at) do |order|
+    #       pretty_format(order.checked_out_at)
+    #     end
+    #     column("Total") { |order| number_to_currency order.total_price }
+    #   end
     panel "Основная информация" do
-      table_for customer do
-        column :name
-        column :category
-        column :status
-      end
+      attributes_table_for customer, :name, :scope, :category, :type, :status
     end
 
     panel "Контакты" do
@@ -43,16 +40,18 @@ ActiveAdmin.register Customer do
         end
       end
     end
-
-    panel "Req" do
-        tr class: "action_items" do
-          td link_to("New Req",
-                     new_admin_customer_customer_requisite_path(customer),
-                     class: :button)
-        end
-    end
     active_admin_comments
-
+  end
+  sidebar "Банковские реквизиты", only: :show do
+    table_for(customer.customer_requisites) do
+      column("Реквизит") {|customer_requisite| customer_requisite.requisite.name}
+      column("Значение") {|customer_requisite| customer_requisite.value}
+    end
+    div class: "action_items" do
+      link_to("Добавить реквизит",
+              new_admin_customer_customer_requisite_path(customer),
+              class: :button)
+    end
   end
 end
 
