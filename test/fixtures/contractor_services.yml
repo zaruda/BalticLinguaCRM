@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  language_from: MyString
+  language_to: MyString
+  contractor: one
+  service: one
+
+two:
+  language_from: MyString
+  language_to: MyString
+  contractor: two
+  service: two

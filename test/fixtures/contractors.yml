@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  department: MyString
+  birthday: 2018-03-07
+  invoices_from: MyString
+  status: MyString
+
+two:
+  name: MyString
+  department: MyString
+  birthday: 2018-03-07
+  invoices_from: MyString
+  status: MyString

@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  tarif: MyString
+  scope_of_work: MyString
+  description: MyText
+  contractor: one
+
+two:
+  tarif: MyString
+  scope_of_work: MyString
+  description: MyText
+  contractor: two

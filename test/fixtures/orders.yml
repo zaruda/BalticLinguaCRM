@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  status: MyString
+  payment_status: MyString
+  start_date_contractor: 2018-03-08 00:03:05
+  end_date_contractor: 2018-03-08 00:03:05
+  start_date_customer: 2018-03-08 00:03:05
+
+two:
+  status: MyString
+  payment_status: MyString
+  start_date_contractor: 2018-03-08 00:03:05
+  end_date_contractor: 2018-03-08 00:03:05
+  start_date_customer: 2018-03-08 00:03:05
