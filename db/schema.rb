@@ -74,15 +74,6 @@ ActiveRecord::Schema.define(version: 2018_03_07_210856) do
     t.index ["contractor_id"], name: "index_contractor_contacts_on_contractor_id"
   end
 
-  create_table "contractor_orders", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.bigint "order_id"
-    t.bigint "contractor_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["contractor_id"], name: "index_contractor_orders_on_contractor_id"
-    t.index ["order_id"], name: "index_contractor_orders_on_order_id"
-  end
-
   create_table "contractor_services", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "language_from"
     t.string "language_to"
@@ -113,6 +104,15 @@ ActiveRecord::Schema.define(version: 2018_03_07_210856) do
     t.string "status"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "contractors_orders", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "order_id"
+    t.bigint "contractor_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["contractor_id"], name: "index_contractors_orders_on_contractor_id"
+    t.index ["order_id"], name: "index_contractors_orders_on_order_id"
   end
 
   create_table "customer_contacts", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -206,11 +206,11 @@ ActiveRecord::Schema.define(version: 2018_03_07_210856) do
   end
 
   add_foreign_key "contractor_contacts", "contractors"
-  add_foreign_key "contractor_orders", "contractors"
-  add_foreign_key "contractor_orders", "orders"
   add_foreign_key "contractor_services", "contractors"
   add_foreign_key "contractor_services", "services"
   add_foreign_key "contractor_tasks", "contractors"
+  add_foreign_key "contractors_orders", "contractors"
+  add_foreign_key "contractors_orders", "orders"
   add_foreign_key "customer_contacts", "customers"
   add_foreign_key "customer_requisites", "customers"
   add_foreign_key "customer_requisites", "requisites"
