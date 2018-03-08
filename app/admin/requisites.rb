@@ -1,6 +1,8 @@
 ActiveAdmin.register Requisite do
-  permit_params :name
   menu label: "Реквизиты"
+
+  permit_params :name
+
   config.create_another = true
 
 # See permitted parameters documentation:

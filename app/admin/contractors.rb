@@ -4,7 +4,6 @@ ActiveAdmin.register Contractor do
   CONTRACTOR_STATUS = ENV['CONTRACTOR_STATUS'].split(',')
 
   permit_params :name, :department, :birthday, :invoices_from, :status
-
   form do |f|
     f.inputs do
       f.input :name
@@ -41,6 +40,32 @@ ActiveAdmin.register Contractor do
         end
       end
     end
+
+    panel 'Заказы' do
+      table_for contractor.orders do
+        column :customer_id
+        column :start_date_contractor
+        column :end_date_contractor
+        column :priority
+        column :scope_of_work
+        # tr class: 'action_items' do
+        #   td link_to('Добавить услугу',
+        #              new_admin_contractor_contractor_service_path(contractor),
+        #              class: :button)
+        #   td link_to('Редактировать услуги',
+        #              admin_contractor_contractor_service_path(contractor),
+        #              class: :button)
+        end
+    end
+
+    panel 'Выплаты' do
+      table_for contractor.payments do
+        column :order_id
+        column :amount
+        column :status
+      end
+    end
+
     active_admin_comments
   end
 
@@ -53,18 +78,19 @@ ActiveAdmin.register Contractor do
     end
   end
 
-
-    # See permitted parameters documentation:
-# https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
-#
-# permit_params :list, :of, :attributes, :on, :model
-#
-# or
-#
-# permit_params do
-#   permitted = [:permitted, :attributes]
-#   permitted << :other if params[:action] == 'create' && current_user.admin?
-#   permitted
-# end
-
+  # sidebar 'Услуги', only: :show do
+  #   ul do
+  #     contractor.contractor_services.each do |service|
+  #       li "#{service.service.name} / #{service.language_from} / #{service.language_to}"
+  #     end
+  #   end
+  #   div class: 'action_items' do
+  #     td link_to('Добавить услугу',
+  #                new_admin_contractor_contractor_service_path(contractor),
+  #                class: :button)
+  #     td link_to('Редактировать услуги',
+  #                admin_contractor_contractor_service_path(contractor),
+  #                class: :button)
+  #   end
+  # end
 end
