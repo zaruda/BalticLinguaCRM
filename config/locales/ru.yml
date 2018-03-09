@@ -1,5 +1,9 @@
 ru:
   devise:
+    failure:
+      admin_user:
+        unauthenticated: 'Вы не авторизованы.'
+        invalid: 'Логин/пароль введен неверно'
     sessions:
       admin_user:
         signed_in: 'Добро пожаловать в BalticLinguaCRM'
@@ -10,6 +14,13 @@ ru:
   time:
     formats:
       long: "%Y-%m-%d %H:%M:%S"
+  activerecord:
+    errors:
+      models:
+        admin_user:
+          attributes:
+            password:
+              blank: 'Пароль не может быть пустым.'
   active_admin:
     dashboard: "Панель управления"
     dashboard_welcome:
@@ -150,3 +161,41 @@ ru:
       block: "Список"
       grid: "Сетка"
       blog: "Блог"
+  app:
+#  general
+    name: 'Имя'
+    scope: 'Сфера деятельности'
+    category: 'Категория'
+    type: 'Тип'
+    department: 'Подразделение'
+    birthday: 'День Рождения'
+    invoices_from: 'Счета оплачивает'
+    status: 'Статус'
+    service: 'Услуга'
+    order: 'Заказ'
+    file: 'Файл'
+    tarif: 'Тариф'
+#    address
+    region: 'Регион'
+    address: 'Адрес'
+    phone: 'Телефон'
+    fax: 'Факс'
+    email: 'E-mail'
+    website: 'Веб-сайт'
+#    order
+    redactor: 'Редактор'
+    customer: 'Заказчик'
+    contractor: 'Подрядчик'
+    start_date_customer: 'Начало работы (с заказчиком)'
+    end_date_customer: 'Окончание работы (с заказчиком)'
+    start_date_contractor: 'Начало работы (с подрядчиком)'
+    end_date_contractor: 'Окончание работы (с подрядчиком)'
+    priority: 'Приоритет'
+    scope_of_work: 'Объем работы'
+    payment_status: 'Статус оплаты'
+    price: 'Стоимость'
+    description: 'Описание'
+    amount: 'Размер выплаты'
+#    customer
+    language_from: 'Перевод С'
+    language_to: 'Перевод На'

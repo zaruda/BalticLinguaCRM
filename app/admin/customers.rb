@@ -25,7 +25,7 @@ ActiveAdmin.register Customer do
                      new_admin_customer_customer_contact_path(customer),
                      class: :button)
           td link_to('Manage adress',
-                     admin_customer_customer_contact_path(customer),
+                     admin_customer_customer_contacts_path(customer),
                      class: :button)
         end
       end

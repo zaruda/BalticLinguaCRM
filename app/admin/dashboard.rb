@@ -17,9 +17,8 @@ ActiveAdmin.register_page 'Dashboard' do
           table_for Order.limit(10) do
             column('ID') { |order| link_to(order.id, admin_order_path(order)) }
             column('Заказчик') { |order| link_to(order.customer.name, admin_customer_path(order.customer)) }
-            column('Сумма') { |order| number_to_currency order.price }
             column('Статус выполнения') { |order| status_tag(order.status) }
-            column('Uploads') {|order| link_to(order.uploads[0].filename, rails_blob_path(order.uploads[0], disposition: :attachment))}
+            column('Документы') { |order| order.uploads.present? ? 'Да' : 'Нет' }
           end
         end
       end
