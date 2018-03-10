@@ -7,7 +7,7 @@ ActiveAdmin.register EditorTask do
   form do |f|
     f.inputs do
       f.input :admin_user_id, as: :select , collection: AdminUser.all.map(&:name)
-      f.input :status, label: I18n.t('app.status')
+      f.input :status, as: :select, collection: ORDER_STATUS, label: I18n.t('app.status')
       f.input :tarif, label: I18n.t('app.tarif')
       f.input :description, label: I18n.t('app.description')
       f.input :files, as: :file, label: I18n.t('app.file')
@@ -29,7 +29,7 @@ ActiveAdmin.register EditorTask do
             editor_task.files.each do |file|
               div link_to(file.filename, rails_blob_path(file, disposition: :attachment))
             end
-          else
+            else
               status_tag 'Файлов нет'
             end
           end
@@ -42,19 +42,5 @@ ActiveAdmin.register EditorTask do
     end
     active_admin_comments
   end
-
-
-# See permitted parameters documentation:
-# https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
-#
-# permit_params :list, :of, :attributes, :on, :model
-#
-# or
-#
-# permit_params do
-#   permitted = [:permitted, :attributes]
-#   permitted << :other if params[:action] == 'create' && current_user.admin?
-#   permitted
-# end
 
 end

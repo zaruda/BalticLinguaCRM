@@ -7,7 +7,7 @@ ActiveAdmin.register Payment do
       f.input :order, as: :select , collection: Order.all.map(&:id),  label: I18n.t('app.order')
       f.input :contractor, label: I18n.t('app.contractor')
       f.input :amount, label: I18n.t('app.amount')
-      f.input :status, label: I18n.t('app.payment_status')
+      f.input :status, as: :select, collection: PAYMENT_STATUS, label: I18n.t('app.payment_status')
       f.input :attachments, as: :file, label: I18n.t('app.file')
     end
     f.actions

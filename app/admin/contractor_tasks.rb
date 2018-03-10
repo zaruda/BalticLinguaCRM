@@ -8,7 +8,7 @@ ActiveAdmin.register ContractorTask do
       f.input :contractor_id, as: :select, collection: Contractor.all, label: I18n.t('app.contractor')
       f.input :scope_of_work, label: I18n.t('app.scope_of_work')
       f.input :tarif, label: I18n.t('app.tarif')
-      f.input :status, label: I18n.t('app.status')
+      f.input :status, as: :select, collection: ORDER_STATUS, label: I18n.t('app.status')
       f.input :description, as: :text, label: I18n.t('app.description')
       f.input :files, as: :file, label: I18n.t('app.file')
     end

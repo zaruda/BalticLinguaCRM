@@ -9,8 +9,14 @@ ActiveAdmin.register Order do
     f.inputs do
       f.input :customer, label: I18n.t('app.customer')
       f.input :contractors, label: I18n.t('app.contractor')
-      f.input :status, label: I18n.t('app.status')
-      f.input :payment_status, label: I18n.t('app.payment_status')
+      f.input :status,
+              label: I18n.t('app.status'),
+              as: :select,
+              collection: ENV['ORDER_STATUS'].split(',')
+      f.input :payment_status,
+              label: I18n.t('app.payment_status'),
+              as: :select,
+              collection: ENV['PAYMENT_STATUS'].split(',')
       f.input :start_date_customer, as: :datetime_picker, label: I18n.t('app.start_date_customer')
       f.input :end_date_customer, as: :datetime_picker, label: I18n.t('app.end_date_customer')
       f.input :start_date_contractor, as: :datetime_picker, label: I18n.t('app.start_date_contractor')
@@ -31,12 +37,12 @@ ActiveAdmin.register Order do
   index do
     selectable_column
     id_column
-    column :customer
-    column :priority
-    column :start_date_customer
-    column :end_date_customer
-    column :payment_status
-    column :status
+    column(I18n.t('app.customer'), :customer)
+    column(I18n.t('app.priority'), :priority)
+    column(I18n.t('app.start_date_customer'), :start_date_customer)
+    column(I18n.t('app.end_date_customer'), :end_date_customer)
+    column(I18n.t('app.payment_status'), :payment_status)
+    column(I18n.t('app.status'), :status)
     actions
   end
 

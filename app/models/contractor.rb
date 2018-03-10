@@ -4,4 +4,8 @@ class Contractor < ApplicationRecord
   has_many :contractor_tasks, dependent: :destroy
   has_many :contractor_contacts, dependent: :destroy
   has_many :contractor_services, dependent: :destroy
+
+  scope :active, -> { where(status: 'Active') }
+  scope :inactive, -> { where(status: 'Inactive') }
+
 end

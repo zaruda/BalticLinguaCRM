@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_03_07_210856) do
+ActiveRecord::Schema.define(version: 2018_03_10_134228) do
 
   create_table "active_admin_comments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "namespace"
@@ -143,7 +143,7 @@ ActiveRecord::Schema.define(version: 2018_03_07_210856) do
     t.string "unp_ogrn"
     t.string "scope"
     t.string "category"
-    t.string "type"
+    t.string "kind"
     t.string "status"
     t.text "comment"
     t.string "bill_type"

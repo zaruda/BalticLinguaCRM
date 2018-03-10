@@ -1,6 +1,16 @@
 ActiveAdmin.register AdminUser do
   menu label: "Пользователи", priority: 1
 
+
+  STATUS = ENV['STATUS'].split(',')
+  ORDER_STATUS = ENV['ORDER_STATUS'].split(',')
+  PAYMENT_STATUS = ENV['PAYMENT_STATUS'].split(',')
+  REDACTOR_TASK_STATUS = ENV['REDACTOR_TASK_STATUS'].split(',')
+  BILL_TYPES = ENV['BILL'].split(',')
+  PAYMENT_TYPES = ENV['PAYMENT_TYPES'].split(',')
+  APPLICATION_TYPES = ENV['APPLICATION_TYPES'].split(',')
+  INVOICES_FROM = ENV['INVOICES_FROM'].split(',')
+
   permit_params :email, :name, :password, :password_confirmation
 
   index do

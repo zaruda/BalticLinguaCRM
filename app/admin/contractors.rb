@@ -1,9 +1,12 @@
 ActiveAdmin.register Contractor do
   menu label: 'Подрядчики', priority: 3
 
-  CONTRACTOR_STATUS = ENV['CONTRACTOR_STATUS'].split(',')
-
   permit_params :name, :department, :birthday, :invoices_from, :status
+
+  scope :all
+  scope :active
+  scope :inactive
+
   form do |f|
     f.inputs do
       f.input :name, label: I18n.t('app.name')
@@ -15,8 +18,8 @@ ActiveAdmin.register Contractor do
                 max_date: '+3D'
               },
               label: I18n.t('app.birthday')
-      f.input :invoices_from, label: I18n.t('app.invoices_from')
-      f.input :status, as: :select, collection: CONTRACTOR_STATUS, label: I18n.t('app.status')
+      f.input :invoices_from, as: :select, collection: INVOICES_FROM, label: I18n.t('app.invoices_from')
+      f.input :status, as: :select, collection: STATUS, label: I18n.t('app.status')
     end
     f.actions
   end
