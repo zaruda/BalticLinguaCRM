@@ -1,3 +1,8 @@
 local:
   service: Disk
   root: <%= Rails.root.join("tmp/storage") %>
+
+heroku:
+  service: Disk
+  root: <%= Rails.root.join("tmp/storage") %>
+  host: "https://balticlingua.herokuapp.com"
