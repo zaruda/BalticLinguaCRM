@@ -95,8 +95,8 @@ ActiveAdmin.register Order do
           if order.uploads.attached?
             order.uploads.each do |file|
               div link_to(file.filename, rails_blob_path(file, disposition: :attachment))
-              end
-            else
+            end
+          else
             status_tag 'Файлов нет'
           end
 
