@@ -44,5 +44,4 @@ ActiveAdmin.register ContractorTask do
     active_admin_comments
   end
 
-
 end

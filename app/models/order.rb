@@ -5,7 +5,9 @@ class Order < ApplicationRecord
   has_many_attached :uploads
 
   default_scope { order(created_at: :desc) }
-  # scope :done, -> { where.not(published_at: '') }
-  # scope :current, -> { where(status: '') }
 
+  scope :done, -> { where(status: 'Выполнен') }
+  scope :current, -> { where(status: 'В работе') }
+
+  validates_presence_of :contractors
 end

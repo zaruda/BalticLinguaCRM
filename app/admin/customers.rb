@@ -97,9 +97,19 @@ ActiveAdmin.register Customer do
       column &:value
     end
     div class: 'action_items' do
-      link_to('Добавить реквизит',
-              new_admin_customer_customer_requisite_path(customer),
-              class: :button)
+      if customer.customer_requisites.present?
+        div link_to('Добавить реквизит',
+                    new_admin_customer_customer_requisite_path(customer),
+                    class: :button)
+        div link_to('Редактировать',
+                    admin_customer_customer_requisites_path(customer),
+                    class: :button)
+      else
+        link_to('Добавить реквизит',
+                new_admin_customer_customer_requisite_path(customer),
+                class: :button)
+      end
+
     end
   end
 end

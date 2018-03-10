@@ -7,4 +7,7 @@ class Customer < ApplicationRecord
 
   scope :active, -> { where(status: 'Active') }
   scope :inactive, -> { where(status: 'Inactive') }
+
+  validates_uniqueness_of :name
+  validates_presence_of :name
 end

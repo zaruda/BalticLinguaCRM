@@ -17,6 +17,50 @@ ru:
   activerecord:
     errors:
       models:
+        service:
+          attributes:
+            name:
+              blank: 'Поле не может быть пустым'
+        requisite:
+          attributes:
+            name:
+              blank: 'Поле не может быть пустым'
+        order:
+          attributes:
+            customer:
+              required: 'Необходимо выбрать заказчика'
+              blank: 'Необходимо выбрать заказчика'
+            contractors:
+              blank: 'Выберите хотя бы одного подрядчика'
+        payment:
+          attributes:
+            order:
+              required: 'Выберите заказ, которому соответсвтует данная выплата.'
+            contractor:
+              required: 'Выберите подрядчика, которому соответсвтует данная выплата.'
+        customer:
+          attributes:
+            name:
+              blank: 'Имя не может быть пустым.'
+        contractor:
+          attributes:
+            name:
+              blank: 'Имя не может быть пустым.'
+        contractor_contact:
+          attributes:
+            email:
+              invalid: 'E-mail введен неверно.'
+        customer_contact:
+          attributes:
+            region:
+              blank: 'Регион не может быть пустым.'
+            address:
+              blank: 'Адрес не может быть пустым.'
+            phone:
+              blank: 'Телефон не может быть пустым.'
+            email:
+              invalid: 'E-mail введен неверно.'
+              blank: 'E-mail не может быть пустым.'
         admin_user:
           attributes:
             password:

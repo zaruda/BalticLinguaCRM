@@ -5,10 +5,14 @@ ActiveAdmin.register Order do
                 :start_date_customer, :end_date_customer, :priority, :price, :description,
                 :scope_of_work, :customer_id, :uploads, contractor_ids: []
 
+  scope :all
+  scope :current
+  scope :done
+
   form multipart: true do |f|
     f.inputs do
       f.input :customer, label: I18n.t('app.customer')
-      f.input :contractors, label: I18n.t('app.contractor')
+      f.input :contractors, collection: Contractor.active, label: I18n.t('app.contractor')
       f.input :status,
               label: I18n.t('app.status'),
               as: :select,

@@ -8,4 +8,5 @@ class Contractor < ApplicationRecord
   scope :active, -> { where(status: 'Active') }
   scope :inactive, -> { where(status: 'Inactive') }
 
+  validates_presence_of :name
 end

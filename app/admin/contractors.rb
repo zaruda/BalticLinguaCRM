@@ -87,11 +87,18 @@ ActiveAdmin.register Contractor do
   sidebar 'Контакты', only: :show do
     attributes_table_for contractor.contractor_contacts, :phone, :email
     div class: 'action_items' do
-      link_to('Добавить',
-              new_admin_contractor_contractor_contact_path(contractor),
-              class: :button)
+      if contractor.contractor_contacts.present?
+        link_to('Редактировать',
+                    edit_admin_contractor_contractor_contact_path(contractor),
+                    class: :button)
+      else
+        link_to('Добавить',
+                    new_admin_contractor_contractor_contact_path(contractor),
+                    class: :button)
+      end
     end
   end
+
 
   # sidebar 'Услуги', only: :show do
   #   ul do
