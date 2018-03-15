@@ -32,9 +32,6 @@ ActiveAdmin.register Customer do
               label: I18n.t('app.payment_type')
       f.input :status, as: :select, collection: STATUS, label: I18n.t('app.status')
       f.input :comment, label: I18n.t('app.comment')
-      # order.uploads.each do |file|
-      # link_to(file.filename, '#', onclick: ApplicationHelper::delete_attachment(file))
-      # end
     end
 
     f.actions
@@ -54,7 +51,23 @@ ActiveAdmin.register Customer do
   show title: :name do
 
     panel 'Основная информация' do
-      attributes_table_for customer, :name, :scope, :category, :kind, :status
+      attributes_table_for customer do
+        row I18n.t('app.name') do
+          customer.name
+        end
+        row I18n.t('app.scope')  do
+          customer.scope
+        end
+        row I18n.t('app.category') do
+          customer.category
+        end
+        row I18n.t('app.type') do
+          customer.kind
+        end
+        row I18n.t('app.status') do
+          customer.status
+        end
+      end
     end
 
     panel 'Контакты' do
@@ -66,10 +79,10 @@ ActiveAdmin.register Customer do
         column('E-mail', :email)
         column('Веб-сайт', :website)
         tr class: 'action_items' do
-          td link_to('New address',
+          td link_to('Добавить контакт',
                      new_admin_customer_customer_contact_path(customer),
                      class: :button)
-          td link_to('Manage adress',
+          td link_to('Редактировать контакты',
                      admin_customer_customer_contacts_path(customer),
                      class: :button)
         end
@@ -89,6 +102,31 @@ ActiveAdmin.register Customer do
       end
     end
     active_admin_comments
+  end
+
+  sidebar 'Контактное лицо', only: :show do
+    attributes_table_for customer.contact_persons do
+      row I18n.t('app.name') do
+        contact_person.name
+      end
+      row I18n.t('app.phone') do
+        contact_person.phone
+      end
+      row I18n.t('app.email') do
+        contact_person.email
+      end
+    end
+    div class: 'action_items' do
+      if customer.contact_persons.present?
+        div link_to('Редактировать',
+                    edit_admin_customer_contact_person_path(customer),
+                    class: :button)
+      else
+        link_to('Добавить',
+                new_admin_customer_contact_person_path(customer),
+                class: :button)
+      end
+    end
   end
 
   sidebar 'Банковские реквизиты', only: :show do

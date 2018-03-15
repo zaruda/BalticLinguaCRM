@@ -85,19 +85,39 @@ ActiveAdmin.register Contractor do
   end
 
   sidebar 'Контакты', only: :show do
-    attributes_table_for contractor.contractor_contacts, :phone, :email
+    table_for contractor.contractor_contacts do
+      column(I18n.t('app.phone')) {|contractor| contractor.phone }
+      column(I18n.t('app.email')) {|contractor| div contractor.email }
+    end
+
     div class: 'action_items' do
-      if contractor.contractor_contacts.present?
-        link_to('Редактировать',
-                    edit_admin_contractor_contractor_contact_path(contractor),
-                    class: :button)
-      else
-        link_to('Добавить',
-                    new_admin_contractor_contractor_contact_path(contractor),
-                    class: :button)
-      end
+      div link_to('Редактировать',
+                  admin_contractor_contractor_contacts_path(contractor),
+                  class: :button)
+      div link_to('Добавить',
+                  new_admin_contractor_contractor_contact_path(contractor),
+                  class: :button)
     end
   end
+
+  sidebar 'Программы', only: :show do
+    ul do
+      contractor.contractor_skills.each do |skill|
+        li skill.programm.name
+      end
+    end
+
+    div class: 'action_items' do
+      div link_to('Редактировать',
+                  admin_contractor_contractor_skills_path(contractor),
+                  class: :button)
+      div link_to('Добавить',
+                  new_admin_contractor_contractor_skill_path(contractor),
+                  class: :button)
+    end
+  end
+
+
 
 
   # sidebar 'Услуги', only: :show do

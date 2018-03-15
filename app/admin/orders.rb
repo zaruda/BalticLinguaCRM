@@ -25,7 +25,10 @@ ActiveAdmin.register Order do
       f.input :end_date_customer, as: :datetime_picker, label: I18n.t('app.end_date_customer')
       f.input :start_date_contractor, as: :datetime_picker, label: I18n.t('app.start_date_contractor')
       f.input :end_date_contractor, as: :datetime_picker, label: I18n.t('app.end_date_contractor')
-      f.input :priority, input_html: { min: '0', max: '10' }, label: I18n.t('app.priority')
+      f.input :priority,
+              as: :select,
+              collection: PRIORITY_TYPES,
+              label: I18n.t('app.priority')
       f.input :price, label: I18n.t('app.price')
       f.input :scope_of_work, label: I18n.t('app.scope_of_work')
       f.input :uploads, as: :file, label: I18n.t('app.file')
@@ -66,7 +69,7 @@ ActiveAdmin.register Order do
           status_tag(order.payment_status)
         end
         row 'Стоимость' do
-          number_to_currency order.price
+          number_to_currency(order.price, unit: "€")
         end
       end
     end

@@ -34,6 +34,7 @@ gem 'jbuilder', '~> 2.5'
 # gem 'capistrano-rails', group: :development
 
 gem 'activeadmin', '~> 1.2', '>= 1.2.1'
+gem 'arctic_admin', '~> 1.4', '>= 1.4.4'
 gem 'devise', '~> 4.4', '>= 4.4.1'
 gem 'figaro', '~> 1.1', '>= 1.1.1'
 gem 'inherited_resources', '~> 1.8'

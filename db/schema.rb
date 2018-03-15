@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_03_10_134228) do
+ActiveRecord::Schema.define(version: 2018_03_15_084619) do
 
   create_table "active_admin_comments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "namespace"
@@ -65,6 +65,16 @@ ActiveRecord::Schema.define(version: 2018_03_10_134228) do
     t.index ["reset_password_token"], name: "index_admin_users_on_reset_password_token", unique: true
   end
 
+  create_table "contact_people", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "name"
+    t.string "phone"
+    t.string "email"
+    t.bigint "customer_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["customer_id"], name: "index_contact_people_on_customer_id"
+  end
+
   create_table "contractor_contacts", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "phone"
     t.string "email"
@@ -83,6 +93,15 @@ ActiveRecord::Schema.define(version: 2018_03_10_134228) do
     t.datetime "updated_at", null: false
     t.index ["contractor_id"], name: "index_contractor_services_on_contractor_id"
     t.index ["service_id"], name: "index_contractor_services_on_service_id"
+  end
+
+  create_table "contractor_skills", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "contractor_id"
+    t.bigint "programm_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["contractor_id"], name: "index_contractor_skills_on_contractor_id"
+    t.index ["programm_id"], name: "index_contractor_skills_on_programm_id"
   end
 
   create_table "contractor_tasks", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -172,7 +191,7 @@ ActiveRecord::Schema.define(version: 2018_03_10_134228) do
     t.datetime "end_date_contractor"
     t.datetime "start_date_customer"
     t.datetime "end_date_customer"
-    t.integer "priority"
+    t.string "priority"
     t.text "description"
     t.string "scope_of_work"
     t.string "price"
@@ -193,6 +212,12 @@ ActiveRecord::Schema.define(version: 2018_03_10_134228) do
     t.index ["order_id"], name: "index_payments_on_order_id"
   end
 
+  create_table "programms", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "requisites", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
@@ -205,9 +230,12 @@ ActiveRecord::Schema.define(version: 2018_03_10_134228) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "contact_people", "customers"
   add_foreign_key "contractor_contacts", "contractors"
   add_foreign_key "contractor_services", "contractors"
   add_foreign_key "contractor_services", "services"
+  add_foreign_key "contractor_skills", "contractors"
+  add_foreign_key "contractor_skills", "programms"
   add_foreign_key "contractor_tasks", "contractors"
   add_foreign_key "contractors_orders", "contractors"
   add_foreign_key "contractors_orders", "orders"
