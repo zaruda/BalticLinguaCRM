@@ -105,21 +105,11 @@ ActiveAdmin.register Customer do
   end
 
   sidebar 'Контактное лицо', only: :show do
-    attributes_table_for customer.contact_persons do
-      row I18n.t('app.name') do
-        contact_person.name
-      end
-      row I18n.t('app.phone') do
-        contact_person.phone
-      end
-      row I18n.t('app.email') do
-        contact_person.email
-      end
-    end
+    attributes_table_for customer.contact_people, :name, :phone, :email
     div class: 'action_items' do
-      if customer.contact_persons.present?
+      if customer.contact_people.present?
         div link_to('Редактировать',
-                    edit_admin_customer_contact_person_path(customer),
+                    admin_customer_contact_people_path(customer),
                     class: :button)
       else
         link_to('Добавить',
