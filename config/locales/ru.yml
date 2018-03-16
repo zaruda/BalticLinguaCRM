@@ -15,6 +15,37 @@ ru:
     formats:
       long: "%Y-%m-%d %H:%M:%S"
   activerecord:
+    models:
+      customer:
+        one: 'Заказчика'
+        other: 'Заказчики'
+      contractor:
+        one: 'Подрядчика'
+        other: 'Подрядчики'
+      order:
+        one: 'Заказ'
+        other: 'Заказы'
+      admin_user:
+        one: 'Пользователя'
+        other: 'Пользователи'
+      payment:
+        one: 'Платеж'
+        other: 'Выплаты'
+      contractor_task:
+        one: 'задачу подрядчику'
+        other: 'Задачи подрядчикам'
+      editor_task:
+        one: 'задачу редактору'
+        other: 'Задачи редакторам'
+      programm:
+        one: 'программу'
+        other: 'Программы'
+      requisite:
+        one: 'реквизит'
+        other: 'Реквизиты'
+      service:
+        one: 'услугу'
+        other: 'Услуги'
     errors:
       models:
         service:
