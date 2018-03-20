@@ -100,6 +100,28 @@ ActiveAdmin.register Contractor do
     end
   end
 
+  sidebar 'Банковские реквизиты', only: :show do
+    table_for(contractor.contractor_requisites) do
+      column('Реквизит', &:requisite)
+      column &:value
+    end
+    div class: 'action_items' do
+      if contractor.contractor_requisites.present?
+        div link_to('Добавить реквизит',
+                    new_admin_contractor_contractor_requisite_path(contractor),
+                    class: :button)
+        div link_to('Редактировать',
+                    admin_contractor_contractor_requisites_path(contractor),
+                    class: :button)
+      else
+        link_to('Добавить реквизит',
+                new_admin_contractor_contractor_requisite_path(contractor),
+                class: :button)
+      end
+
+    end
+  end
+
   sidebar 'Программы', only: :show do
     ul do
       contractor.contractor_skills.each do |skill|

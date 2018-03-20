@@ -3,6 +3,8 @@ ActiveAdmin.register ContractorSkill do
 
   permit_params :contractor_id, :programm_id
 
+  config.create_another = true
+
 # See permitted parameters documentation:
 # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
 #

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_03_15_084619) do
+ActiveRecord::Schema.define(version: 2018_03_20_135829) do
 
   create_table "active_admin_comments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "namespace"
@@ -72,6 +72,8 @@ ActiveRecord::Schema.define(version: 2018_03_15_084619) do
     t.bigint "customer_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "position"
+    t.text "description"
     t.index ["customer_id"], name: "index_contact_people_on_customer_id"
   end
 
@@ -82,6 +84,16 @@ ActiveRecord::Schema.define(version: 2018_03_15_084619) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["contractor_id"], name: "index_contractor_contacts_on_contractor_id"
+  end
+
+  create_table "contractor_requisites", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "value"
+    t.bigint "contractor_id"
+    t.bigint "requisite_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["contractor_id"], name: "index_contractor_requisites_on_contractor_id"
+    t.index ["requisite_id"], name: "index_contractor_requisites_on_requisite_id"
   end
 
   create_table "contractor_services", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -232,6 +244,8 @@ ActiveRecord::Schema.define(version: 2018_03_15_084619) do
 
   add_foreign_key "contact_people", "customers"
   add_foreign_key "contractor_contacts", "contractors"
+  add_foreign_key "contractor_requisites", "contractors"
+  add_foreign_key "contractor_requisites", "requisites"
   add_foreign_key "contractor_services", "contractors"
   add_foreign_key "contractor_services", "services"
   add_foreign_key "contractor_skills", "contractors"
